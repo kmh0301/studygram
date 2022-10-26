@@ -9,12 +9,16 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+
+
     private Button mBtnlogin;
     private Button mBtnregister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         mBtnlogin = findViewById(R.id.btn_login);
         mBtnlogin.setOnClickListener(new View.OnClickListener() {
@@ -35,5 +39,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }
