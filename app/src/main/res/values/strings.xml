@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">studygram</string>
+    <string name="welcome_to_studygram">Welcome to Studygram</string>
 </resources>
