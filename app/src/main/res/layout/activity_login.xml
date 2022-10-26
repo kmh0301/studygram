@@ -92,7 +92,7 @@
             android:background="@drawable/login_btn"
             android:text="Login"
             android:textSize="12sp"
-            android:gravity="center_vertical"
+            android:gravity="center"
 
 
 
