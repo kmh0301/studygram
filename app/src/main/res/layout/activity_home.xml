@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="20dp"
-    android:background="@color/lightwhite"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".HomeActivity">
-
-    <EditText
-        android:id="@+id/search_bar"
+    <LinearLayout
+        android:id="@+id/ll_post_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:padding="10dp"
-        android:hint="@string/Search"
-        android:textColorHint="@color/graygreen"
-        android:drawableStart="@drawable/ic_search"
-        android:drawablePadding="5dp"
-        android:background="@drawable/graygreenborder"
-        />
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/et_searchbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:padding="10dp"
+            android:hint="@string/Search"
+            android:textColorHint="@color/graygreen"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="5dp"
+            android:background="@drawable/graygreenborder"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
 
-        />
-
-</LinearLayout>
+</ScrollView>

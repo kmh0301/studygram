@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        mBtnlogin = findViewById(R.id.btn_login);
+        mBtnlogin = findViewById(R.id.btn_login_1);
         mBtnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
