@@ -19,9 +19,11 @@
             android:layout_marginRight="30dp"
             >
             <ImageView
+                android:id="@+id/iv_usericon_1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@color/graygreen"
+                android:src="@drawable/ic_baseline_favorite_border_24"
                 />
             <LinearLayout
                 android:layout_width="150dp"
@@ -37,18 +39,21 @@
                     android:textStyle="bold"
                     />
                 <TextView
+                    android:id="@+id/tv_postdate_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="12 day ago"
                     />
             </LinearLayout>
             <Button
+                android:id="@+id/btn_likebtn_1"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/ic_baseline_favorite_border_24"
                 android:layout_gravity="center"
                 />
             <TextView
+                android:id="@+id/tv_likecount_1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="100"
@@ -64,13 +69,16 @@
             android:orientation="vertical"
             android:layout_marginTop="20dp">
             <ImageView
+                android:id="@+id/iv_postiImage_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_favorite_border_24"
                 />
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_postcontent_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque porta donec nunc quam. Vulputate sem congue consectetur adipiscing. Dolor feugiat morbi orci interdum dui platea. Tortor, auctor sed felis, odio donec imperdiet."
