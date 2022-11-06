@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home"
+        />
+
+    <item
+        android:id="@+id/timer"
+        android:title="Timer"
+        android:icon="@drawable/ic_baseline_timer"
+        />
+
+    <item
+        android:id="@+id/addpost"
+        android:title=""
+        android:enabled="false"
+        />
+
+    <item
+        android:id="@+id/todo"
+        android:title="Todo List"
+        android:icon="@drawable/ic_baseline_playlist_add_check"
+        />
+
+    <item
+        android:id="@+id/userprofile"
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_profile"
+        />
+</menu>
