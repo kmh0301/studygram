@@ -39,7 +39,7 @@ public class TimerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
 
-        timerTextView = (TextView) findViewById(R.id.timer);
+        timerTextView = findViewById(R.id.timer);
 
         Button b = (Button) findViewById(R.id.btn_start_pause);
         b.setText("start");
