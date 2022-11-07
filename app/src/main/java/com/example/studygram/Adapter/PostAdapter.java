@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.studygram.Adapter.PostAdapter;
 import com.example.studygram.Post;
 import com.example.studygram.R;
 
