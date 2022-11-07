@@ -12,13 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.studygram.Adapter.PostAdapter;
 import com.example.studygram.Post;
 import com.example.studygram.R;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter <PostAdapter.MyViewHolder>{
     Context context;
-    private List<Post> PostList;
+    private ArrayList<Post> PostList;
 
-    public PostAdapter(Context context, List<Post> postList) {
+    public PostAdapter(Context context, ArrayList<Post> postList) {
         this.context = context;
         this.PostList = postList;
     }

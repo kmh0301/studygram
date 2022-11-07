@@ -18,7 +18,6 @@ import com.example.studygram.databinding.ActivityMainBinding;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
-//    private RecyclerView mRVpost;
     ActivityHomeBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
         binding.bottomNavigationView.setBackground(null);
 
         setContentView(binding.getRoot());
-        replaceFragment(new Fragment());
+        replaceFragment(new HomeFragment());
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.home:
