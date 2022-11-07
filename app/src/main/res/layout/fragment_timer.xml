@@ -11,6 +11,31 @@
     >
 
 
+    <EditText
+        android:id="@+id/et_timer_m"
+        android:inputType = "number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:hint="Minutes"
+        android:textColor="@color/graygreen"
+        app:layout_constraintTop_toBottomOf="@+id/progress_circular"
+        tools:layout_editor_absoluteX="-10dp" />
+
+    <EditText
+        android:id="@+id/et_timer_s"
+        android:inputType = "number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:hint="Seconds"
+        app:layout_constraintTop_toBottomOf="@+id/et_timer_m"
+        tools:layout_editor_absoluteX="-10dp" />
+
     <ProgressBar
         android:id="@+id/progress_circular"
         android:layout_width="271dp"
@@ -21,6 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224"
         tools:progress="10" />
 
     <TextView
@@ -31,41 +57,52 @@
         android:gravity="center"
         android:text="00:00"
         android:textSize="40sp"
-
         app:layout_constraintBottom_toBottomOf="@+id/progress_circular"
-        app:layout_constraintEnd_toEndOf="@+id/progress_circular"
-        app:layout_constraintStart_toStartOf="@+id/progress_circular"
-        app:layout_constraintTop_toTopOf="@+id/progress_circular" />
+        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintTop_toTopOf="@+id/progress_circular"
+        app:layout_constraintVertical_bias="0.497"
+        />
 
     <Button
-        android:id="@+id/btn_reset"
+        android:id="@+id/btn_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_marginTop="231dp"
         android:gravity="center"
-        android:text="Reset"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Set"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_start_pause"
-        app:layout_constraintVertical_bias="0.0"
-        tools:visibility="visible" />
+        app:layout_constraintTop_toBottomOf="@+id/et_timer_s" />
+
 
     <Button
         android:id="@+id/btn_start_pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_marginTop="104dp"
         android:gravity="center"
         android:text="Start"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_circular"
-        app:layout_constraintVertical_bias="0.0" />
+
+        app:layout_constraintTop_toBottomOf="@+id/btn_set" />
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="Reset"
+        android:visibility="invisible"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_start_pause"
+        tools:visibility="visible" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
