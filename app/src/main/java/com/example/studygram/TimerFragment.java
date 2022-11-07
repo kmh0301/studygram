@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,16 +21,21 @@ import java.util.Locale;
 
 
 public class TimerFragment extends Fragment {
-    public static final long START_TIME_IN_MILLTS = 300000;
+    public static long START_TIME_IN_MILLTS =1800000 ;
     private TextView mTextViewTimer;
     private Button mButtonStartPause;
     private Button mButtonReset;
+    private Button mButtonSet;
     private ProgressBar mProgressBar;
+    private EditText mTimeMinutes;
+    private EditText mTimeSeconds;
+
     private int progressstatus = 0;
 
     private CountDownTimer mCountDownTimer;
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLTS;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,10 +53,25 @@ public class TimerFragment extends Fragment {
         mButtonStartPause = view.findViewById(R.id.btn_start_pause);
         mButtonReset = view.findViewById(R.id.btn_reset);
         mProgressBar = view.findViewById(R.id.progress_circular);
+        mTimeMinutes = view.findViewById(R.id.et_timer_m);
+        mTimeSeconds = view.findViewById(R.id.et_timer_s);
+        mButtonSet = view.findViewById(R.id.btn_set);
+
+        mButtonSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int minutes = Integer.parseInt(mTimeMinutes.getText().toString());
+                int seconds = Integer.parseInt(mTimeSeconds.getText().toString());
+                START_TIME_IN_MILLTS = (long)(minutes*60*1000+seconds*1000);
+                resetTimer(view);
+            }
+        });
 
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 if(mTimerRunning){
                     pauseTimer(view);
                 }else{
@@ -72,6 +93,7 @@ public class TimerFragment extends Fragment {
 
     private void startTimer(View view) {
         mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+
             @Override
             public void onTick(long millisUnitFinished) {
                 mTimeLeftInMillis = millisUnitFinished;
