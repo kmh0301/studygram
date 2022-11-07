@@ -14,17 +14,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
 
 public class TimerFragment extends Fragment {
-    public static final long START_TIME_IN_MILLTS = 1800000;
+    public static final long START_TIME_IN_MILLTS = 300000;
     private TextView mTextViewTimer;
     private Button mButtonStartPause;
     private Button mButtonReset;
     private ProgressBar mProgressBar;
-    private int progr = 0;
+    private int progressstatus = 0;
 
     private CountDownTimer mCountDownTimer;
     private boolean mTimerRunning;
@@ -45,6 +46,7 @@ public class TimerFragment extends Fragment {
         mTextViewTimer = view.findViewById(R.id.tv_timer);
         mButtonStartPause = view.findViewById(R.id.btn_start_pause);
         mButtonReset = view.findViewById(R.id.btn_reset);
+        mProgressBar = view.findViewById(R.id.progress_circular);
 
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +76,9 @@ public class TimerFragment extends Fragment {
             public void onTick(long millisUnitFinished) {
                 mTimeLeftInMillis = millisUnitFinished;
                 updateCountDownText();
+                progressstatus++;
+                mProgressBar.setProgress((int) (progressstatus*100/(START_TIME_IN_MILLTS/1000)));
+
             }
 
             @Override
@@ -82,6 +87,7 @@ public class TimerFragment extends Fragment {
                 mButtonStartPause.setText("Start");
                 mButtonStartPause.setVisibility(view.INVISIBLE);
                 mButtonReset.setVisibility(view.VISIBLE);
+                mProgressBar.setProgress(100);
             }
         }.start();
 
@@ -101,6 +107,8 @@ public class TimerFragment extends Fragment {
         updateCountDownText();
         mButtonReset.setVisibility(view.INVISIBLE);
         mButtonStartPause.setVisibility(view.VISIBLE);
+        progressstatus = 0;
+        mProgressBar.setProgress(0);
     }
     private void updateCountDownText(){
         int minutes = (int) (mTimeLeftInMillis/1000) / 60;
@@ -109,6 +117,7 @@ public class TimerFragment extends Fragment {
         String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
         mTextViewTimer.setText(timeLeftFormatted);
     }
+
 
 
 
