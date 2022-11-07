@@ -15,9 +15,11 @@ import com.example.studygram.R;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter <PostAdapter.MyViewHolder>{
+    Context context;
     private List<Post> PostList;
 
-    public PostAdapter(List<Post> postList) {
+    public PostAdapter(Context context, List<Post> postList) {
+        this.context = context;
         this.PostList = postList;
     }
 
@@ -26,7 +28,7 @@ public class PostAdapter extends RecyclerView.Adapter <PostAdapter.MyViewHolder>
     //將Item 拿到
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //infalter作用可以將layout變成view對象
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_item,parent,false);//view拿到
+        View view = LayoutInflater.from(context).inflate(R.layout.post_item,parent,false);//view拿到
         MyViewHolder myViewHolder= new MyViewHolder(view);
         return myViewHolder;
     }
