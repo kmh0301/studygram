@@ -48,7 +48,21 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                postData();
+                String psw1= passwordReg.getText().toString();
+                String psw2= confirmPasswordReg.getText().toString();
+                if (nameReg.getText().toString().isEmpty() || passwordReg.getText().toString().isEmpty() || confirmPasswordReg.getText().toString().isEmpty()|| emailReg.getText().toString().isEmpty()) {
+                    Toast.makeText(RegisterActivity.this, "Please enter both the values", Toast.LENGTH_SHORT).show();
+                    return;
+                }else if(checkUsername()){
+                    Toast.makeText(RegisterActivity.this, "This username already be used! ", Toast.LENGTH_SHORT).show();
+                    return;
+                }else if(confirmPasswordReg.getText().toString().equals(psw1)==false){
+                    Toast.makeText(RegisterActivity.this, "Password should be the same", Toast.LENGTH_SHORT).show();
+                    return;
+                }else{
+                    postData();
+                }
+
             }
 
             public void postData() {
@@ -78,6 +92,11 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
                 requestQueue.add(jsonObjectRequest);
+            }
+
+            public boolean checkUsername(){
+
+                return false;
             }
 
 
