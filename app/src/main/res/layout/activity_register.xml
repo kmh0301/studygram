@@ -49,6 +49,36 @@
             android:layout_marginTop="40dp"
             />
         <EditText
+            android:id="@+id/usernameReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/lightgray"
+            android:hint="Input you username here"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/graygreenborder"
+            android:paddingRight="5dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/fontcolor"
+            android:layout_marginTop="10dp"
+            />
+        <EditText
+            android:id="@+id/emailReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15sp"
@@ -74,9 +104,10 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:textColor="@color/fontcolor"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             />
         <EditText
+            android:id="@+id/passwordReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -102,9 +133,10 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:textColor="@color/fontcolor"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             />
         <EditText
+            android:id="@+id/confirmpasswordReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -122,7 +154,7 @@
             />
 
         <Button
-            android:id="@+id/btb_login"
+            android:id="@+id/btn_register_2"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
