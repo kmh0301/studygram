@@ -50,6 +50,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/et_username_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -77,6 +78,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/et_pw_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
