@@ -49,7 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String psw1= passwordReg.getText().toString();
-                String psw2= confirmPasswordReg.getText().toString();
                 if (nameReg.getText().toString().isEmpty() || passwordReg.getText().toString().isEmpty() || confirmPasswordReg.getText().toString().isEmpty()|| emailReg.getText().toString().isEmpty()) {
                     Toast.makeText(RegisterActivity.this, "Please enter both the values", Toast.LENGTH_SHORT).show();
                     return;
