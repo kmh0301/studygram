@@ -58,10 +58,8 @@ public class TodoFragment extends Fragment {
         tasksAdapter.setTasks(taskList);
 
 
-        newTaskBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
 
 
+        
+    }
 }
