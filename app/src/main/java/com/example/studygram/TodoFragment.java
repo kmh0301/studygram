@@ -1,5 +1,6 @@
 package com.example.studygram;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,15 +15,22 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.studygram.Adapter.ToDoAdpater;
+import com.example.studygram.Data.AddNewTask;
+import com.example.studygram.Data.DatabaseHandler;
+import com.example.studygram.Data.DialogCloseListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class TodoFragment extends Fragment {
+public class TodoFragment extends Fragment implements DialogCloseListener {
     private RecyclerView taskRecyclerView;
     private ToDoAdpater tasksAdapter;
     private List<ToDoModel> taskList;
     private Button newTaskBtn;
+    private DatabaseHandler db;
+    private FloatingActionButton fab;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,31 +43,59 @@ public class TodoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        taskRecyclerView = view.findViewById(R.id.taskRecyclerView);
-        taskRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        tasksAdapter = new ToDoAdpater(this);
-        taskRecyclerView.setAdapter(tasksAdapter);
+        db = new DatabaseHandler(getContext());
+        db.openDatabase();
 
         taskList = new ArrayList<>();
 
-        ToDoModel task = new ToDoModel();
-        task.setTask("This is a Test Task");
-        task.setStatus(0);
-        task.setId(1);
 
+        taskRecyclerView = view.findViewById(R.id.taskRecyclerView);
+        taskRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        tasksAdapter = new ToDoAdpater(db, this);
+        taskRecyclerView.setAdapter(tasksAdapter);
 
-        taskList.add(task);
-        taskList.add(task);
-        taskList.add(task);
-        taskList.add(task);
-        taskList.add(task);
-        taskList.add(task);
+        fab = view.findViewById(R.id.fab);
 
+        taskList = db.getAllTasks();
+
+        taskList = db.getAllTasks();
+        Collections.reverse(taskList);
         tasksAdapter.setTasks(taskList);
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddNewTask.newInstance().show(getParentFragmentManager(), AddNewTask.TAG);
+            }
+        });
 
 
 
+
+//        ToDoModel task = new ToDoModel();
+//        task.setTask("This is a Test Task");
+//        task.setStatus(0);
+//        task.setId(1);
+//
+//
+//        taskList.add(task);
+//        taskList.add(task);
+//        taskList.add(task);
+//        taskList.add(task);
+//        taskList.add(task);
+//        taskList.add(task);
+//
+//        tasksAdapter.setTasks(taskList);
+
+
+    }
+
+    @Override
+    public void handleDialogClose(DialogInterface dialog) {
+        taskList = db.getAllTasks();
+        Collections.reverse(taskList);
+        tasksAdapter.setTasks(taskList);
+        tasksAdapter.notifyDataSetChanged();
 
     }
 }
