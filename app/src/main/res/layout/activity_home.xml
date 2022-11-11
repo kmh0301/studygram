@@ -67,5 +67,5 @@
         android:src="@drawable/ic_baseline_add"
         app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="30dp"
-        android:tint="@color/graygreen"/>
+        app:tint="@color/grayyellow"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

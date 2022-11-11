@@ -61,7 +61,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
                         if(mEtloginUsername.getText().toString().equals(username) && mEtloginPassword.getText().toString().equals(password) ){
-                            Toast.makeText(LoginActivity.this, "pass", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            startActivity(intent);
                         }else{
                             Toast.makeText(LoginActivity.this, "false", Toast.LENGTH_SHORT).show();
                             Toast.makeText(LoginActivity.this, "Username = "+ username+ ",password = "+ password, Toast.LENGTH_SHORT).show();
@@ -99,8 +101,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-//                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-//                startActivity(intent);
+//
             }
         });
     }
