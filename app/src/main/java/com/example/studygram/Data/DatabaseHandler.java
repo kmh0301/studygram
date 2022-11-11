@@ -39,7 +39,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void openDatabase() {
+    public void openDatabase(){
         db = this.getWritableDatabase();
     }
 
@@ -86,7 +86,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.update(TODO_TABLE, cv, ID + "=?", new String[] {String.valueOf(id)});
     }
     public void deleteTask(int id){
-        db. delete(TODO_TABLE, ID + "=?", new String[] {String.valueOf(id)});
+        db.delete(TODO_TABLE, ID + "=?", new String[] {String.valueOf(id)});
         }
 
 

@@ -28,7 +28,6 @@ public class TodoFragment extends Fragment implements DialogCloseListener {
     private RecyclerView taskRecyclerView;
     private ToDoAdpater tasksAdapter;
     private List<ToDoModel> taskList;
-    private Button newTaskBtn;
     private DatabaseHandler db;
     private FloatingActionButton fab;
 
@@ -65,7 +64,7 @@ public class TodoFragment extends Fragment implements DialogCloseListener {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddNewTask.newInstance().show(getParentFragmentManager(), AddNewTask.TAG);
+                AddNewTask.newInstance().show(getActivity().getSupportFragmentManager(), AddNewTask.TAG);
             }
         });
 

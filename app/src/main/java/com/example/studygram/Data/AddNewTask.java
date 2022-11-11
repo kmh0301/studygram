@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.example.studygram.R;
 import com.example.studygram.ToDoModel;
@@ -21,6 +22,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class AddNewTask extends BottomSheetDialogFragment {
     public static final String TAG = "ActionBottomDialog";
+
     private EditText newTaskText;
     private Button newTaskSaveButton;
     private DatabaseHandler db;
@@ -46,8 +48,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
         super.onViewCreated(view, savedInstanceState);
         newTaskText = getView(). findViewById(R.id.newTaskText);
         newTaskSaveButton = getView().findViewById(R.id.newTaskButton);
+
         db = new DatabaseHandler(getActivity());
         db.openDatabase();
+
         boolean isUpdate = false;
         final Bundle bundle = getArguments();
         if(bundle != null){
@@ -71,7 +75,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     newTaskSaveButton.setEnabled(false);
                     newTaskSaveButton.setTextColor(Color.GRAY);
                 }else {
-                    newTaskSaveButton.setEnabled(false);
+                    newTaskSaveButton.setEnabled(true);
                     newTaskSaveButton.setTextColor(ContextCompat.getColor(getContext(), R.color.darkgreen));
                 }
             }
@@ -81,7 +85,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
             }
         });
-        boolean finalIsUpdate = isUpdate;
+        final boolean finalIsUpdate = isUpdate;
         newTaskSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,10 +103,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
         });
     }
 
-    public void  OnDismiss(DialogInterface dialog){
-        Activity activity = getActivity();
-        if(activity instanceof DialogCloseListener){
-            ((DialogCloseListener)activity).handleDialogClose(dialog);
+    public void  onDismiss(DialogInterface dialog){
+        Fragment fragment = getParentFragment();
+        if(fragment instanceof DialogCloseListener){
+            ((DialogCloseListener)fragment).handleDialogClose(dialog);
         }
     }
 }
