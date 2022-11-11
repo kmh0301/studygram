@@ -6,33 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HomeActivity">
-<!--    <LinearLayout-->
-<!--        android:id="@+id/ll_post_1"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="10dp"-->
-<!--        android:orientation="vertical">-->
-<!--        <EditText-->
-<!--            android:id="@+id/et_searchbar"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:padding="10dp"-->
-<!--            android:hint="@string/Search"-->
-<!--            android:textColorHint="@color/graygreen"-->
-<!--            android:drawableStart="@drawable/ic_search"-->
-<!--            android:drawablePadding="5dp"-->
-<!--            android:background="@drawable/graygreenborder"-->
-<!--            />-->
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/rv_post"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp">-->
-<!--        </androidx.recyclerview.widget.RecyclerView>-->
 
-
-<!--    </LinearLayout>-->
     <FrameLayout
         android:id="@+id/fl_navbar"
         android:layout_width="match_parent"
@@ -58,14 +32,15 @@
             app:elevation="0dp"
             />
 
+
     </com.google.android.material.bottomappbar.BottomAppBar>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:src="@drawable/ic_baseline_add"
-        app:layout_anchor="@id/bottomAppBar"
-        app:maxImageSize="30dp"
-        app:tint="@color/grayyellow"/>
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:backgroundTint="@color/white"-->
+<!--        android:src="@drawable/ic_baseline_add"-->
+<!--        app:layout_anchor="@id/bottomAppBar"-->
+<!--        app:maxImageSize="30dp"-->
+<!--        app:tint="@color/grayyellow"/>-->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

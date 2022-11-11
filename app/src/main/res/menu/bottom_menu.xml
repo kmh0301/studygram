@@ -16,8 +16,9 @@
 
     <item
         android:id="@+id/addpost"
-        android:title=""
-        android:enabled="false"
+        android:title="Add post"
+        android:icon="@drawable/ic_baseline_add"
+
         />
 
     <item
