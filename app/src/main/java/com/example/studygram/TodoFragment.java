@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.studygram.Adapter.ToDoAdpater;
 
@@ -21,6 +22,7 @@ public class TodoFragment extends Fragment {
     private RecyclerView taskRecyclerView;
     private ToDoAdpater tasksAdapter;
     private List<ToDoModel> taskList;
+    private Button newTaskBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,5 +56,12 @@ public class TodoFragment extends Fragment {
         taskList.add(task);
 
         tasksAdapter.setTasks(taskList);
-    }
+
+
+        newTaskBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+
+
 }
