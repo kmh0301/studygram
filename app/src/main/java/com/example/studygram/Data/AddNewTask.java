@@ -31,25 +31,25 @@ public class AddNewTask extends BottomSheetDialogFragment {
         return new AddNewTask();
     }
 
-    @Override
+    @Override//checked
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(STYLE_NORMAL, R.style.DialogStyle);
     }
 
-    @Override
+    @Override//checked
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater. inflate (R.layout.newtask_layout, container,false);
+        View view = inflater.inflate(R.layout.newtask_layout, container,false);
         getDialog().getWindow().setSoftInputMode (WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         return view;
     }
-    @Override
+    @Override//checked
     public void onViewCreated (View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        newTaskText = getView(). findViewById(R.id.newTaskText);
+        newTaskText = getView().findViewById(R.id.newTaskText);
         newTaskSaveButton = getView().findViewById(R.id.newTaskButton);
 
-        db = new DatabaseHandler(getActivity());
+        db = new DatabaseHandler(getActivity());//checked
         db.openDatabase();
 
         boolean isUpdate = false;
@@ -104,9 +104,9 @@ public class AddNewTask extends BottomSheetDialogFragment {
     }
 
     public void  onDismiss(DialogInterface dialog){
-        Fragment fragment = getParentFragment();
-        if(fragment instanceof DialogCloseListener){
-            ((DialogCloseListener)fragment).handleDialogClose(dialog);
+        Activity activity = getActivity();
+        if(activity instanceof DialogCloseListener){
+            ((DialogCloseListener)activity).handleDialogClose(dialog);
         }
     }
 }

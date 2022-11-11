@@ -64,7 +64,7 @@ public class TodoFragment extends Fragment implements DialogCloseListener {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddNewTask.newInstance().show(getActivity().getSupportFragmentManager(), AddNewTask.TAG);
+                AddNewTask.newInstance().show(getParentFragmentManager(), AddNewTask.TAG);
             }
         });
 
