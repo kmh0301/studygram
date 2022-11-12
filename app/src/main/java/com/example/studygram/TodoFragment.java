@@ -1,19 +1,23 @@
 package com.example.studygram;
 
+import static com.example.studygram.databinding.FragmentTodoBinding.inflate;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.studygram.Adapter.ToDoAdpater;
 import com.example.studygram.Data.AddNewTask;
@@ -24,73 +28,49 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+
 
 public class TodoFragment extends Fragment implements DialogCloseListener {
-    private RecyclerView taskRecyclerView;
-    private ToDoAdpater tasksAdapter;
-    private List<ToDoModel> taskList;
     private DatabaseHandler db;
+    private RecyclerView tasksRecyclerView;
+    private ToDoAdpater tasksAdapter;
     private FloatingActionButton fab;
+    private Button fab2;
+    private AddNewTask addNewTask;
+
+    private List<ToDoModel> taskList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_todo, container, false);
-    }
+        super.onCreate(savedInstanceState);
 
+        View view = View.inflate(getActivity(),R.layout.fragment_todo,null);
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        db = new DatabaseHandler(getContext());
+        db = new DatabaseHandler(getActivity());
         db.openDatabase();
 
-        taskList = new ArrayList<>();
+        tasksRecyclerView = view.findViewById(R.id.taskRecyclerView);
+        tasksRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        tasksAdapter = new ToDoAdpater(db,TodoFragment.this);
+        tasksRecyclerView.setAdapter(tasksAdapter);
 
-
-        taskRecyclerView = view.findViewById(R.id.taskRecyclerView);
-        taskRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        tasksAdapter = new ToDoAdpater(db, this);
-        taskRecyclerView.setAdapter(tasksAdapter);
 
         fab = view.findViewById(R.id.fab);
 
         taskList = db.getAllTasks();
-
-        taskList = db.getAllTasks();
         Collections.reverse(taskList);
+
         tasksAdapter.setTasks(taskList);
 
-
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AddNewTask.newInstance().show(getParentFragmentManager(), AddNewTask.TAG);
-            }
+        fab.setOnClickListener(v -> {
+          AddNewTask.newInstance().show(getParentFragmentManager(), AddNewTask.TAG);
+            Toast.makeText(getActivity(), "Hello", Toast.LENGTH_SHORT).show();
         });
-
-
-
-
-//        ToDoModel task = new ToDoModel();
-//        task.setTask("This is a Test Task");
-//        task.setStatus(0);
-//        task.setId(1);
-//
-//
-//        taskList.add(task);
-//        taskList.add(task);
-//        taskList.add(task);
-//        taskList.add(task);
-//        taskList.add(task);
-//        taskList.add(task);
-//
-//        tasksAdapter.setTasks(taskList);
-
-
+        return view;
     }
+
 
     @Override
     public void handleDialogClose(DialogInterface dialog) {
