@@ -40,7 +40,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
     @Override//checked
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.newtask_layout, container,false);
-        getDialog().getWindow().setSoftInputMode (WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         return view;
     }
     @Override//checked
@@ -56,8 +56,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
         final Bundle bundle = getArguments();
         if(bundle != null){
             isUpdate = true;
-            String task = bundle. getString("task");
-            newTaskText. setText(task);
+            String task = bundle.getString("task");
+            newTaskText.setText(task);
             if(task.length()>0){
                 newTaskSaveButton.setTextColor(ContextCompat.getColor(getContext(), R.color.darkgreen));
             }
