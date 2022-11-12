@@ -67,6 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                         }else{
                             Toast.makeText(LoginActivity.this, "false", Toast.LENGTH_SHORT).show();
                             Toast.makeText(LoginActivity.this, "Username = "+ username+ ",password = "+ password, Toast.LENGTH_SHORT).show();
+                            username="";
+                            password="";
                         }
 
 

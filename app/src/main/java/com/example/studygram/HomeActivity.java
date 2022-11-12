@@ -19,6 +19,8 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     ActivityHomeBinding binding;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +44,16 @@ public class HomeActivity extends AppCompatActivity {
                     replaceFragment(new TodoFragment());
                     break;
 
+                case R.id.userprofile:
+                    replaceFragment(new UserProfileFragment());
+                    break;
+
+                case R.id.addpost:
+                    replaceFragment(new NewPostFragment());
+                    Toast.makeText(HomeActivity.this, "button work", Toast.LENGTH_SHORT).show();
+                    break;
             }
             return true;
-
         });
 
     }
