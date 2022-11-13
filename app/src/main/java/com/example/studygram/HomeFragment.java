@@ -19,6 +19,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.studygram.Adapter.PostAdapter;
 
@@ -52,12 +53,12 @@ public class HomeFragment extends Fragment {
             super.onViewCreated(view, savedInstanceState);
 
 //        dataInitialize();
-//
+        GetData();
         mRVpost = view.findViewById(R.id.rv_post);
         mRVpost.setLayoutManager(new LinearLayoutManager(getContext()));
         mRVpost.setHasFixedSize(true);
 
-        GetData();
+
 
 //        PostAdapter postAdapter = new PostAdapter(getActivity().getApplicationContext(),postList);
 //        mRVpost.setAdapter(postAdapter);
@@ -76,14 +77,20 @@ public class HomeFragment extends Fragment {
         RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
 
 
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,null, new Response.Listener<JSONArray>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,null, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(JSONArray response) {
-
-                for(int i = 0 ; i<=response.length();i++){
+            public void onResponse(JSONObject response) {
+                postList = new ArrayList<>();
                     try {
-                        JSONObject Posts = response.getJSONObject(i);
-                        postList.add(new Post(Posts.getString("Username"), Posts.getString("Post content")));
+                        JSONArray jsonArray = response.getJSONArray("Posts");
+                        for(int i = 0 ; i<=jsonArray.length();i++) {
+                            JSONObject Posts = jsonArray.getJSONObject(i);
+
+                            String username = Posts.getString("Username");
+                            String post_content = Posts.getString("Post content");
+                            Post post = new Post(username,post_content);
+                            postList.add(post);
+                        }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -92,7 +99,6 @@ public class HomeFragment extends Fragment {
                     mRVpost.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
 
-                }
 
             }
         }, new Response.ErrorListener() {
