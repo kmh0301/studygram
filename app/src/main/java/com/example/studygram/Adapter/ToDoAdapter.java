@@ -16,17 +16,18 @@ import com.example.studygram.Data.AddNewTask;
 import com.example.studygram.Data.DatabaseHandler;
 import com.example.studygram.R;
 import com.example.studygram.ToDoModel;
-import com.example.studygram.TodoFragment;
 
 
 import java.util.List;
 
-public class ToDoAdpater extends RecyclerView.Adapter<ToDoAdpater.ViewHolder> {
+
+public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder>{
+
     private List<ToDoModel> todoList;
     private DatabaseHandler db;
     private Fragment fragment;
 
-    public ToDoAdpater(DatabaseHandler db, Fragment fragment) {
+    public ToDoAdapter(DatabaseHandler db, Fragment fragment) {
         this.db = db;
         this.fragment = fragment;
     }
@@ -68,7 +69,7 @@ public class ToDoAdpater extends RecyclerView.Adapter<ToDoAdpater.ViewHolder> {
     }
 
     public Context getContext() {
-        return fragment.getActivity();
+        return fragment.getContext();
     }
 
     public void setTasks(List<ToDoModel> todoList) {
