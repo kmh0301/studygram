@@ -62,6 +62,7 @@ public class TimerFragment extends Fragment {
             public void onClick(View view) {
                 int minutes = Integer.parseInt(mTimeMinutes.getText().toString());
                 int seconds = Integer.parseInt(mTimeSeconds.getText().toString());
+
                 START_TIME_IN_MILLTS = (long)(minutes*60*1000+seconds*1000);
                 resetTimer(view);
             }

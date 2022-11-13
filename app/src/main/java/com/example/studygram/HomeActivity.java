@@ -9,17 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.studygram.Adapter.PostAdapter;
 import com.example.studygram.databinding.ActivityHomeBinding;
 import com.example.studygram.databinding.ActivityMainBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     ActivityHomeBinding binding;
-
+    private FloatingActionButton fabtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,14 @@ public class HomeActivity extends AppCompatActivity {
             }
             return true;
         });
+
+//        fabtn = findViewById(R.id.fab_btn_add);
+//        fabtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                fabtn.
+//            }
+//        });
 
     }
 

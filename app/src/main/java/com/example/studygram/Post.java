@@ -9,9 +9,11 @@ public class Post {
     private int postImage_id;
     private String postContent;
 
-    public Post() {
-    }
+    public Post(String username, String postdate) {
+        this.username = username;
+        this.postdate = postdate;
 
+    }
     public Post(String username, String postdate, int usericon_id, String likecount, int postImage_id, String postContent) {
         this.username = username;
         this.postdate = postdate;
