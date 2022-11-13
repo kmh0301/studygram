@@ -50,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         String username = "";
                         String password = "";
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        startActivity(intent);
 
                         try {
                             JSONObject Users = response.getJSONObject(0);
@@ -103,7 +105,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-//
             }
         });
     }
