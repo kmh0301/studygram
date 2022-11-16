@@ -35,8 +35,11 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
     private RecyclerView mRVpost;
+    private LoginActivity loginActivity;
     private ArrayList<Post> postList;
+    private static User user = new User();
     private String username;
+
     private String postdate;
     PostAdapter adapter;
     String url ="https://7673ea35-b3b8-4ab3-be53-d738fe9da3c7.mock.pstmn.io/post";
@@ -46,6 +49,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        Toast.makeText(getActivity(), user.getUsername(), Toast.LENGTH_SHORT).show();
         GetData();
         mRVpost = view.findViewById(R.id.rv_post);
         mRVpost.setLayoutManager(new LinearLayoutManager(getContext()));

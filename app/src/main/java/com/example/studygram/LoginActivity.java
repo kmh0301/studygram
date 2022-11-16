@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button mBtnlogin;
     private EditText  mEtloginUsername;
     private EditText  mEtloginPassword;
-    private User user;
+    private User user = new User();
     private String username;
     private String password;
     @Override
@@ -64,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         if(mEtloginUsername.getText().toString().equals(username) && mEtloginPassword.getText().toString().equals(password) ){
                             Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_SHORT).show();
+                            user.setUsername(username);
                             access();
                         }else{
                             Toast.makeText(LoginActivity.this, "false", Toast.LENGTH_SHORT).show();
@@ -115,6 +116,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 
 
     public void access(){
