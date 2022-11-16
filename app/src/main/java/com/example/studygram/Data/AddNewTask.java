@@ -12,12 +12,14 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.studygram.IRefresh;
 import com.example.studygram.R;
 import com.example.studygram.ToDoModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -30,10 +32,14 @@ public class AddNewTask extends BottomSheetDialogFragment {
     private EditText newTaskText;
     private Button newTaskSaveButton;
 
-    private DatabaseHandler db;
+    public AddNewTask(IRefresh iRefresh) {
+        this.iRefresh = iRefresh;
+    }
 
-    public static AddNewTask newInstance(){
-        return new AddNewTask();
+    private DatabaseHandler db;
+    IRefresh iRefresh;
+    public static AddNewTask newInstance(IRefresh iRefresh){
+        return new AddNewTask(iRefresh);
     }
 
     @Nullable
@@ -104,6 +110,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     task.setTask(text);
                     task.setStatus(0);
                     db.insertTask(task);
+                }
+                if (iRefresh!=null){
+                    iRefresh.refresh();
+                    Toast.makeText(getContext(),"success",Toast.LENGTH_LONG).show();
                 }
                 dismiss();
             }

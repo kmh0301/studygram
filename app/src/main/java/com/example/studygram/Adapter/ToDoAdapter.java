@@ -89,7 +89,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder>{
         Bundle bundle = new Bundle();
         bundle.putInt("id", item.getId());
         bundle.putString("task", item.getTask());
-        AddNewTask fragment = new AddNewTask();
+        AddNewTask fragment = new AddNewTask(null);
         fragment.setArguments(bundle);
         fragment.show(fragment.getParentFragmentManager(), AddNewTask.TAG);
     }

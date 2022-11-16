@@ -25,7 +25,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class TodoFragment extends Fragment implements DialogCloseListener {
+public class TodoFragment extends Fragment implements DialogCloseListener,IRefresh {
     private DatabaseHandler db;
     private RecyclerView tasksRecyclerView;
     private ToDoAdapter tasksAdapter;
@@ -53,18 +53,28 @@ public class TodoFragment extends Fragment implements DialogCloseListener {
 
         fab = view.findViewById(R.id.fab);
 
-        taskList = db.getAllTasks();
-        Collections.reverse(taskList);
-
-        tasksAdapter.setTasks(taskList);
+//        taskList = db.getAllTasks();
+//        Collections.reverse(taskList);
+//
+//        tasksAdapter.setTasks(taskList);
 
         fab.setOnClickListener(v -> {
-          AddNewTask.newInstance().show(getParentFragmentManager(), AddNewTask.TAG);
+            AddNewTask.newInstance(this).show(getParentFragmentManager(), AddNewTask.TAG);
             Toast.makeText(getActivity(), "Hello", Toast.LENGTH_SHORT).show();
         });
         return view;
     }
 
+    public void refresh(){
+        taskList = db.getAllTasks();
+        Collections.reverse(taskList);
+        tasksAdapter.setTasks(taskList);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        refresh();
+    }
 
     @Override
     public void handleDialogClose(DialogInterface dialog) {
