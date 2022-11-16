@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.studygram.Adapter.PostAdapter;
 
@@ -20,6 +21,8 @@ import java.util.ArrayList;
 public class UserProfileFragment extends Fragment {
     private RecyclerView mypost;
     private ArrayList<Post> postList;
+    private TextView username;
+    private static User user = new User();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,7 +35,8 @@ public class UserProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        username = view.findViewById(R.id.tv_username_2);
+        username.setText(user.getUsername());
         dataInitialize();
         mypost = view.findViewById(R.id.rv_post_1);
         mypost.setLayoutManager(new LinearLayoutManager(getContext()));
