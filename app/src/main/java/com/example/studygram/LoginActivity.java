@@ -26,7 +26,9 @@ public class LoginActivity extends AppCompatActivity {
     private Button mBtnlogin;
     private EditText  mEtloginUsername;
     private EditText  mEtloginPassword;
-
+    private User user;
+    private String username;
+    private String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +50,8 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
 
-                        String username = "";
-                        String password = "";
-                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                        startActivity(intent);
+                        username = "";
+                        password = "";
 
                         try {
                             JSONObject Users = response.getJSONObject(0);
@@ -63,13 +63,14 @@ public class LoginActivity extends AppCompatActivity {
 
 
                         if(mEtloginUsername.getText().toString().equals(username) && mEtloginPassword.getText().toString().equals(password) ){
-
-                            startActivity(intent);
+                            Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_SHORT).show();
+                            access();
                         }else{
                             Toast.makeText(LoginActivity.this, "false", Toast.LENGTH_SHORT).show();
                             Toast.makeText(LoginActivity.this, "Username = "+ username+ ",password = "+ password, Toast.LENGTH_SHORT).show();
                             username="";
                             password="";
+                            mEtloginPassword.setText("");
                         }
 
 
@@ -81,22 +82,28 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
 
+
+                if(mEtloginUsername.getText().toString().equals(username) && mEtloginPassword.getText().toString().equals(password) ){
+                    Toast.makeText(LoginActivity.this,username, Toast.LENGTH_SHORT).show();
+
+                }
                 queue.add(request);
 
-//                // Request a string response from the provided URL.
-//                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-//                        new Response.Listener<String>() {
-//                            @Override
-//                            public void onResponse(String response) {
-//                                // Display the first 500 characters of the response string.
-//                                Toast.makeText(LoginActivity.this, response, Toast.LENGTH_SHORT).show();
-//                            }
-//                        }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(LoginActivity.this, "Error occured",Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+
+                // Request a string response from the provided URL.
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                // Display the first 500 characters of the response string.
+                                Toast.makeText(LoginActivity.this, response, Toast.LENGTH_SHORT).show();
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(LoginActivity.this, "Error occured",Toast.LENGTH_SHORT).show();
+                    }
+                });
 
                 // Add the request to the RequestQueue.
 
@@ -104,7 +111,14 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+//
             }
         });
+    }
+
+
+    public void access(){
+        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(intent);
     }
 }

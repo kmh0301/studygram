@@ -42,10 +42,10 @@ public class PostAdapter extends RecyclerView.Adapter <PostAdapter.MyViewHolder>
         //Step2: 設置item 從對應post(object) 獲得對應的數據
         holder.usernameText.setText(post.getUsername());
         holder.postdateText.setText(post.getPostdate());
-        holder.likecountText.setText(post.getLikecount());
-        holder.postContentText.setText(post.getPostContent());
-        holder.userIconImage.setImageResource(post.getUsericon_id());
-        holder.userpostImage.setImageResource(post.getPostImage_id());
+//        holder.likecountText.setText(post.getLikecount());
+//        holder.postContentText.setText(post.getPostContent());
+//        holder.userIconImage.setImageResource(post.getUsericon_id());
+//        holder.userpostImage.setImageResource(post.getPostImage_id());
     }
 
     @Override
@@ -64,12 +64,12 @@ public class PostAdapter extends RecyclerView.Adapter <PostAdapter.MyViewHolder>
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            this.usernameText = itemView.findViewById(R.id.tv_username_1);
-            this.postdateText = itemView.findViewById(R.id.tv_postdate_1);
-            this.likecountText = itemView.findViewById(R.id.tv_likecount_1);
-            this.postContentText = itemView.findViewById(R.id.tv_postcontent_1);
-            this.userIconImage = itemView.findViewById(R.id.iv_usericon_1);
-            this.userpostImage = itemView.findViewById(R.id.iv_postiImage_1);
+            usernameText = itemView.findViewById(R.id.tv_username_1);
+            postdateText = itemView.findViewById(R.id.tv_postdate_1);
+//            likecountText = itemView.findViewById(R.id.tv_likecount_1);
+//            postContentText = itemView.findViewById(R.id.tv_postcontent_1);
+//            userIconImage = itemView.findViewById(R.id.iv_usericon_1);
+//            userpostImage = itemView.findViewById(R.id.iv_postiImage_1);
         }
     }
 
