@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
     private String username;
     private String postdate;
     PostAdapter adapter;
-    String url ="https://7673ea35-b3b8-4ab3-be53-d738fe9da3c7.mock.pstmn.io/post";
+    String url ="https://2c1f-218-102-211-54.ap.ngrok.io/posts";
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -108,18 +108,17 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
 
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,null, new Response.Listener<JSONObject>() {
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,null, new Response.Listener<JSONArray>() {
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(JSONArray response) {
                 postList = new ArrayList<>();
                 try {
-                    JSONArray jsonArray = response.getJSONArray("Posts");
-                    for(int i = 0 ; i<jsonArray.length();i++) {
-                        JSONObject Posts = jsonArray.getJSONObject(i);
+//                    JSONArray jsonArray = response.getJSONArray("username");
+                    for(int i = 0 ; i<response.length();i++) {
+                        JSONObject Posts = response.getJSONObject(i);
 
-                        String username = Posts.getString("Username");
-                        String post_content = Posts.getString("Post content");
+                        String username = Posts.getString("username");
+                        String post_content = Posts.getString("content");
                         Post post = new Post(username,post_content);
                         postList.add(post);
                     }

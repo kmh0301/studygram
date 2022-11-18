@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button mBtnlogin;
     private EditText  mEtloginUsername;
     private EditText  mEtloginPassword;
-    private User user;
+    private static User user = new User();
     private String username;
     private String password;
     @Override
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 // Instantiate the RequestQueue.
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
-                String url ="https://b1d23e95-fb80-48ee-895c-c9102a8a7a29.mock.pstmn.io/users?Username="+ mEtloginUsername.getText().toString();
+                String url ="https://2c1f-218-102-211-54.ap.ngrok.io/user?username="+ mEtloginUsername.getText().toString();
 
                 JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,null, new Response.Listener<JSONArray>() {
                     @Override
@@ -55,8 +55,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         try {
                             JSONObject Users = response.getJSONObject(0);
-                            username = Users.getString("Username");
-                            password = Users.getString("Password");
+                            username = Users.getString("username");
+                            password = Users.getString("pwd");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -64,6 +64,9 @@ public class LoginActivity extends AppCompatActivity {
 
                         if(mEtloginUsername.getText().toString().equals(username) && mEtloginPassword.getText().toString().equals(password) ){
                             Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_SHORT).show();
+                            user.setUsername(username);
+
+
                             access();
                         }else{
                             Toast.makeText(LoginActivity.this, "false", Toast.LENGTH_SHORT).show();
