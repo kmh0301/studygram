@@ -68,15 +68,17 @@ public class RegisterActivity extends AppCompatActivity {
             public void checkUsername(){
 
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
-                String url ="https://2bb9d050-a45d-4fa3-aceb-01a6683d44da.mock.pstmn.io/users?username="+ nameReg.getText().toString();
-                JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,null, new Response.Listener<JSONArray>() {
+                String url1 ="https://2c1f-218-102-211-54.ap.ngrok.io/user?username="+ nameReg.getText().toString();
+                JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url1,null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
 
                         usernameExist = "";
                         try {
                             JSONObject Users = response.getJSONObject(0);
-                            usernameExist = Users.getString("Username");
+                            usernameExist = Users.getString("username");
+                            Toast.makeText(RegisterActivity.this, "123", Toast.LENGTH_SHORT).show();
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -87,6 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }else{
                             validCheck=false;
                         }
+                        Toast.makeText(RegisterActivity.this, "456", Toast.LENGTH_SHORT).show();
                         checkUserRegisterDate(validCheck);
 
 
@@ -94,6 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(RegisterActivity.this, "789", Toast.LENGTH_SHORT).show();
                         Toast.makeText(RegisterActivity.this, "something wrong!",Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -105,15 +109,15 @@ public class RegisterActivity extends AppCompatActivity {
                 JSONObject object = new JSONObject();
                 try {
                     //input your API parameters
-                    object.put("Username", nameReg.getText().toString());
-                    object.put("Email", emailReg.getText().toString());
-                    object.put("Password", passwordReg.getText().toString());
+                    object.put("username", nameReg.getText().toString());
+                    object.put("email", emailReg.getText().toString());
+                    object.put("pwd", passwordReg.getText().toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 // Enter the correct url for your api service site
-                String url = "https://2bb9d050-a45d-4fa3-aceb-01a6683d44da.mock.pstmn.io/users";
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, object,
+                String url2 = "https://2c1f-218-102-211-54.ap.ngrok.io/users";
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url2, object,
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
