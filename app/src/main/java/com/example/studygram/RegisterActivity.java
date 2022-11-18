@@ -4,28 +4,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.util.HashMap;
-import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private Button mBtnRegister;
     private EditText nameReg, passwordReg, confirmPasswordReg, emailReg;
+    private boolean validCheck = true;
+    private String usernameExist;
     RequestQueue requestQueue;
 
 
@@ -48,11 +47,14 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                checkUsername();
+            }
+            public void checkUserRegisterDate(boolean validCheck){
                 String psw1= passwordReg.getText().toString();
                 if (nameReg.getText().toString().isEmpty() || passwordReg.getText().toString().isEmpty() || confirmPasswordReg.getText().toString().isEmpty()|| emailReg.getText().toString().isEmpty()) {
                     Toast.makeText(RegisterActivity.this, "Please enter both the values", Toast.LENGTH_SHORT).show();
                     return;
-                }else if(checkUsername()){
+                }else if(validCheck){
                     Toast.makeText(RegisterActivity.this, "This username already be used! ", Toast.LENGTH_SHORT).show();
                     return;
                 }else if(confirmPasswordReg.getText().toString().equals(psw1)==false){
@@ -61,7 +63,45 @@ public class RegisterActivity extends AppCompatActivity {
                 }else{
                     postData();
                 }
+            }
 
+            public void checkUsername(){
+
+                RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
+                String url1 ="https://2c1f-218-102-211-54.ap.ngrok.io/user?username="+ nameReg.getText().toString();
+                JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url1,null, new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        usernameExist = "";
+                        try {
+                            JSONObject Users = response.getJSONObject(0);
+                            usernameExist = Users.getString("username");
+                            Toast.makeText(RegisterActivity.this, "123", Toast.LENGTH_SHORT).show();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        if(nameReg.getText().toString().equals(usernameExist)){
+                            validCheck = true;
+
+                        }else{
+                            validCheck=false;
+                        }
+                        Toast.makeText(RegisterActivity.this, "456", Toast.LENGTH_SHORT).show();
+                        checkUserRegisterDate(validCheck);
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(RegisterActivity.this, "789", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "something wrong!",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                queue.add(request);
             }
 
             public void postData() {
@@ -69,33 +109,27 @@ public class RegisterActivity extends AppCompatActivity {
                 JSONObject object = new JSONObject();
                 try {
                     //input your API parameters
-                    object.put("Username", nameReg.getText().toString());
-                    object.put("Email", emailReg.getText().toString());
-                    object.put("Password", passwordReg.getText().toString());
-                    object.put("ConfirmPassword", confirmPasswordReg.getText().toString());
+                    object.put("username", nameReg.getText().toString());
+                    object.put("email", emailReg.getText().toString());
+                    object.put("pwd", passwordReg.getText().toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 // Enter the correct url for your api service site
-                String url = "https://b1d23e95-fb80-48ee-895c-c9102a8a7a29.mock.pstmn.io/users";
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, object,
+                String url2 = "https://2c1f-218-102-211-54.ap.ngrok.io/users";
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url2, object,
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                Toast.makeText(RegisterActivity.this, "Data added to API", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "Register Successfully", Toast.LENGTH_SHORT).show();
                             }
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(RegisterActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Failed Please Try Again!", Toast.LENGTH_SHORT).show();
                     }
                 });
                 requestQueue.add(jsonObjectRequest);
-            }
-
-            public boolean checkUsername(){
-
-                return false;
             }
 
 
