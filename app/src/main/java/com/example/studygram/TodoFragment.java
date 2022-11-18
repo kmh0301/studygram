@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,6 +52,11 @@ public class TodoFragment extends Fragment implements DialogCloseListener,IRefre
         tasksRecyclerView.setAdapter(tasksAdapter);
 
 
+        ItemTouchHelper itemTouchHelper = new
+                ItemTouchHelper(new RecycleItemTouchHelper(tasksAdapter));
+        itemTouchHelper.attachToRecyclerView(tasksRecyclerView);
+
+
         fab = view.findViewById(R.id.fab);
 
 //        taskList = db.getAllTasks();
@@ -60,7 +66,6 @@ public class TodoFragment extends Fragment implements DialogCloseListener,IRefre
 
         fab.setOnClickListener(v -> {
             AddNewTask.newInstance(this).show(getParentFragmentManager(), AddNewTask.TAG);
-            Toast.makeText(getActivity(), "Hello", Toast.LENGTH_SHORT).show();
         });
         return view;
     }

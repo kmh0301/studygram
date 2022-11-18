@@ -116,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 // Enter the correct url for your api service site
-                String url2 = "https://2c1f-218-102-211-54.ap.ngrok.io/users";
+                String url2 = "https://2c1f-218-102-211-54.ap.ngrok.io/user?username="+nameReg.getText().toString()+"&email="+emailReg.getText().toString()+"&pwd="+passwordReg.getText().toString();
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url2, object,
                         new Response.Listener<JSONObject>() {
                             @Override
