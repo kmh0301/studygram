@@ -36,13 +36,13 @@ public class UserProfileFragment extends Fragment {
     private User user = new User();
     private TextView usernameProfile;
     PostAdapter adapter;
-    String url ="https://2c1f-218-102-211-54.ap.ngrok.io/post?username="+user.getUsername();
+    String url ="https://0399-218-102-211-54.ap.ngrok.io/post?username="+user.getUsername();
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_user_profile, container, false);
         GetData();
         usernameProfile.setText(user.getUsername());
         myPost = view.findViewById(R.id.rv_post_1);
