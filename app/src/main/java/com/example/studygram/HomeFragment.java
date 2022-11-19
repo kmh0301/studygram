@@ -68,14 +68,14 @@ public class HomeFragment extends Fragment {
 //        mRVpost.setAdapter(postAdapter);
     }
 
-    private void dataInitialize(){
-        postList = new ArrayList<>();
-        Post post1 = new Post("username1","12 day ago",R.drawable.user1_icon, "50", R.drawable.user1_icon, "This is my icon!");
-        Post post2 = new Post("username2","2 day ago", R.drawable.user2_icon, "50", R.drawable.user2_icon, "This is my icon!");
-        postList.add(post1);
-        postList.add(post2);
-
-    }
+//    private void dataInitialize(){
+//        postList = new ArrayList<>();
+//        Post post1 = new Post("username1","12 day ago",R.drawable.user1_icon, "50", R.drawable.user1_icon, "This is my icon!");
+//        Post post2 = new Post("username2","2 day ago", R.drawable.user2_icon, "50", R.drawable.user2_icon, "This is my icon!");
+//        postList.add(post1);
+//        postList.add(post2);
+//
+//    }
 
     private void GetData(){
         RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
