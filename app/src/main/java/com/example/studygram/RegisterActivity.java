@@ -1,5 +1,6 @@
 package com.example.studygram;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -62,6 +63,8 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }else{
                     postData();
+                    returnMain();
+
                 }
             }
 
@@ -77,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
                         try {
                             JSONObject Users = response.getJSONObject(0);
                             usernameExist = Users.getString("username");
-                            Toast.makeText(RegisterActivity.this, "123", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(RegisterActivity.this, "123", Toast.LENGTH_SHORT).show();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -89,7 +92,6 @@ public class RegisterActivity extends AppCompatActivity {
                         }else{
                             validCheck=false;
                         }
-                        Toast.makeText(RegisterActivity.this, "456", Toast.LENGTH_SHORT).show();
                         checkUserRegisterDate(validCheck);
 
 
@@ -97,7 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(RegisterActivity.this, "789", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(RegisterActivity.this, "789", Toast.LENGTH_SHORT).show();
                         Toast.makeText(RegisterActivity.this, "something wrong!",Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -122,6 +124,8 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(JSONObject response) {
                                 Toast.makeText(RegisterActivity.this, "Register Successfully", Toast.LENGTH_SHORT).show();
+
+
                             }
                         }, new Response.ErrorListener() {
                     @Override
@@ -130,6 +134,11 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
                 requestQueue.add(jsonObjectRequest);
+            }
+
+            public void returnMain(){
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
             }
 
 

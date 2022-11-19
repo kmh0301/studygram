@@ -20,6 +20,5 @@
         android:textSize="16sp"
         android:text="Save"
         android:textAllCaps="false"
-        android:background="@drawable/graygreenborder"
-        android:textColor="@color/lightwhite"/>
+        android:textColor="@color/graygreen"/>
 </RelativeLayout>

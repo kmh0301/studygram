@@ -58,7 +58,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         newTaskText = view.findViewById(R.id.newTaskText);
-        newTaskSaveButton = getView().findViewById(R.id.newTaskButton);
+        newTaskSaveButton = view.findViewById(R.id.newTaskButton);
 
         boolean isUpdate = false;
 
@@ -88,7 +88,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 }
                 else{
                     newTaskSaveButton.setEnabled(true);
-                    newTaskSaveButton.setTextColor(ContextCompat.getColor(getContext(), R.color.yellow));
+                    newTaskSaveButton.setTextColor(ContextCompat.getColor(getContext(), R.color.graygreen));
                 }
             }
 
