@@ -63,7 +63,7 @@ public class TimerFragment extends Fragment {
             public void onClick(View view) {
                 if(mTimeMinutes.getText().toString().trim().equals("")||mTimeSeconds.getText().toString().trim().equals("")) {
                     Toast.makeText(getActivity(), "please set the timer", Toast.LENGTH_SHORT).show();
-                }else if(mTimeMinutes.getText().toString().trim().equals("0") && mTimeSeconds.getText().toString().trim().equals("0")){
+                }else if(mTimeMinutes.getText().toString().trim().substring(0,1).equals("0") && mTimeSeconds.getText().toString().trim().substring(0,1).equals("0")){
                     Toast.makeText(getActivity(), "please reset the timer", Toast.LENGTH_SHORT).show();
                 }else{
                     int minutes = Integer.parseInt(mTimeMinutes.getText().toString());
