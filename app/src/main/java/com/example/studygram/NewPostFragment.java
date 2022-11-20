@@ -83,7 +83,8 @@ public class NewPostFragment extends Fragment {
                             e.printStackTrace();
                         }
 
-                        Toast.makeText(getActivity(), "Add New Post", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Added New Post", Toast.LENGTH_SHORT).show();
+                        postContent.setText("");
                     }
                 }, new Response.ErrorListener() {
             @Override

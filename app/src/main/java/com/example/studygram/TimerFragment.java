@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,10 +61,16 @@ public class TimerFragment extends Fragment {
         mButtonSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int minutes = Integer.parseInt(mTimeMinutes.getText().toString());
-                int seconds = Integer.parseInt(mTimeSeconds.getText().toString());
-                START_TIME_IN_MILLTS = (long)(minutes*60*1000+seconds*1000);
-                resetTimer(view);
+                if(mTimeMinutes.getText().toString().trim().equals("")||mTimeSeconds.getText().toString().trim().equals("")) {
+                    Toast.makeText(getActivity(), "please set the timer", Toast.LENGTH_SHORT).show();
+                }else if(mTimeMinutes.getText().toString().trim().equals("0") && mTimeSeconds.getText().toString().trim().equals("0")){
+                    Toast.makeText(getActivity(), "please reset the timer", Toast.LENGTH_SHORT).show();
+                }else{
+                    int minutes = Integer.parseInt(mTimeMinutes.getText().toString());
+                    int seconds = Integer.parseInt(mTimeSeconds.getText().toString());
+                    START_TIME_IN_MILLTS = (long)(minutes*60*1000+seconds*1000);
+                    resetTimer(view);
+                }
             }
         });
 
