@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
     private String username;
     private String postdate;
     PostAdapter adapter;
-    String url ="https://0399-218-102-211-54.ap.ngrok.io/posts";
+    String url ="https://c64c-218-102-211-54.ap.ngrok.io/posts";
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

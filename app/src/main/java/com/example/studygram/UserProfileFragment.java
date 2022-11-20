@@ -34,7 +34,7 @@ public class UserProfileFragment extends Fragment {
     private ArrayList<Post> postList;
     private TextView username;
     private static User user = new User();
-    String url ="https://0399-218-102-211-54.ap.ngrok.io/post?username="+user.getUsername();
+    String url ="https://c64c-218-102-211-54.ap.ngrok.io/post?username="+user.getUsername();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

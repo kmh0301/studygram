@@ -71,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void checkUsername(){
 
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
-                String url1 ="https://0399-218-102-211-54.ap.ngrok.io/user?username="+ nameReg.getText().toString();
+                String url1 ="https://c64c-218-102-211-54.ap.ngrok.io/user?username="+ nameReg.getText().toString();
                 JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url1,null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -118,7 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 // Enter the correct url for your api service site
-                String url2 = "https://0399-218-102-211-54.ap.ngrok.io/user?username="+nameReg.getText().toString()+"&email="+emailReg.getText().toString()+"&pwd="+passwordReg.getText().toString();
+                String url2 = "https://c64c-218-102-211-54.ap.ngrok.io/user?username="+nameReg.getText().toString()+"&email="+emailReg.getText().toString()+"&pwd="+passwordReg.getText().toString();
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url2, object,
                         new Response.Listener<JSONObject>() {
                             @Override
