@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 // Instantiate the RequestQueue.
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
-                String url ="https://c64c-218-102-211-54.ap.ngrok.io/user?username="+ mEtloginUsername.getText().toString();
+                String url ="https://2d8b-49-131-118-97.ap.ngrok.io/user?username="+ mEtloginUsername.getText().toString();
 
                 JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,null, new Response.Listener<JSONArray>() {
                     @Override
@@ -61,20 +61,8 @@ public class LoginActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
+                        checkNamePassword(username, password);
 
-                        if(mEtloginUsername.getText().toString().equals(username) && mEtloginPassword.getText().toString().equals(password) ){
-                            Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_SHORT).show();
-                            user.setUsername(username);
-
-
-                            access();
-                        }else{
-                            Toast.makeText(LoginActivity.this, "false", Toast.LENGTH_SHORT).show();
-                            Toast.makeText(LoginActivity.this, "Username = "+ username+ ",password = "+ password, Toast.LENGTH_SHORT).show();
-                            username="";
-                            password="";
-                            mEtloginPassword.setText("");
-                        }
 
 
                     }
@@ -123,5 +111,21 @@ public class LoginActivity extends AppCompatActivity {
     public void access(){
         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
         startActivity(intent);
+    }
+
+    public void checkNamePassword(String username, String password){
+        if(mEtloginUsername.getText().toString().equals(username) && mEtloginPassword.getText().toString().equals(password) ){
+            Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_SHORT).show();
+            user.setUsername(username);
+
+
+            access();
+        }else{
+            Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Please Input correct username and password", Toast.LENGTH_SHORT).show();
+            username="";
+            password="";
+            mEtloginPassword.setText("");
+        }
     }
 }

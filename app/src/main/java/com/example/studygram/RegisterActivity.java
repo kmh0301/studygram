@@ -57,9 +57,12 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }else if(validCheck){
                     Toast.makeText(RegisterActivity.this, "This username already be used! ", Toast.LENGTH_SHORT).show();
+                    nameReg.setText("");
                     return;
                 }else if(confirmPasswordReg.getText().toString().equals(psw1)==false){
                     Toast.makeText(RegisterActivity.this, "Password should be the same", Toast.LENGTH_SHORT).show();
+                    passwordReg.setText("");
+                    confirmPasswordReg.setText("");
                     return;
                 }else{
                     postData();
@@ -71,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void checkUsername(){
 
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
-                String url1 ="https://c64c-218-102-211-54.ap.ngrok.io/user?username="+ nameReg.getText().toString();
+                String url1 ="https://2d8b-49-131-118-97.ap.ngrok.io/user?username="+ nameReg.getText().toString();
                 JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url1,null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -118,7 +121,7 @@ public class RegisterActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 // Enter the correct url for your api service site
-                String url2 = "https://c64c-218-102-211-54.ap.ngrok.io/user?username="+nameReg.getText().toString()+"&email="+emailReg.getText().toString()+"&pwd="+passwordReg.getText().toString();
+                String url2 = "https://2d8b-49-131-118-97.ap.ngrok.io/users?username="+nameReg.getText().toString()+"&email="+emailReg.getText().toString()+"&pwd="+passwordReg.getText().toString();
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url2, object,
                         new Response.Listener<JSONObject>() {
                             @Override

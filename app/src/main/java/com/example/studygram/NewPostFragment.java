@@ -49,10 +49,7 @@ public class NewPostFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "000", Toast.LENGTH_SHORT).show();
                 AddPost();
-                Toast.makeText(getActivity(), "111", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
@@ -68,7 +65,6 @@ public class NewPostFragment extends Fragment {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(getActivity(), "123", Toast.LENGTH_SHORT).show();
                         try {
                             //input your API parameters
 
@@ -78,7 +74,6 @@ public class NewPostFragment extends Fragment {
 
                             object.put("username", user.getUsername());
                             object.put("content", postContent.getText().toString());
-                            Toast.makeText(getActivity(), "456", Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
