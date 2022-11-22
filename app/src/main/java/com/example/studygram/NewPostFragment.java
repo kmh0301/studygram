@@ -68,10 +68,6 @@ public class NewPostFragment extends Fragment {
                         try {
                             //input your API parameters
 
-
-//                            String username = object.getString("username");
-//                            String content = object.getString("content");
-
                             object.put("username", user.getUsername());
                             object.put("content", postContent.getText().toString());
                         } catch (JSONException e) {

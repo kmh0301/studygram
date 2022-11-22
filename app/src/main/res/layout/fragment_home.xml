@@ -12,19 +12,17 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:orientation="vertical">
-        <EditText
-            android:id="@+id/et_searchbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginHorizontal="20dp"
-            android:padding="10dp"
-            android:hint="@string/Search"
-            android:textColorHint="@color/graygreen"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="5dp"
-            android:background="@drawable/graygreenborder"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="STUDYGRAM"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/judson"
+            android:textSize="20dp"
             />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_post"
             android:layout_width="match_parent"

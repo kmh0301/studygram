@@ -50,7 +50,6 @@ public class HomeActivity extends AppCompatActivity {
 
                 case R.id.addpost:
                     replaceFragment(new NewPostFragment());
-                    Toast.makeText(HomeActivity.this, "button work", Toast.LENGTH_SHORT).show();
                     break;
             }
             return true;

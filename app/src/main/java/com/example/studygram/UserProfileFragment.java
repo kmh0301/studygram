@@ -107,7 +107,6 @@ public class UserProfileFragment extends Fragment {
 
                 PostAdapter postAdapter = new PostAdapter(getContext(),postList);
                 mypost.setAdapter(postAdapter);
-                Toast.makeText(getActivity(), "hello2", Toast.LENGTH_SHORT).show();
                 postAdapter.notifyDataSetChanged();
             }
         }, new Response.ErrorListener() {

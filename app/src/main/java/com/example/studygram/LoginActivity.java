@@ -74,10 +74,10 @@ public class LoginActivity extends AppCompatActivity {
                 });
 
 
-                if(mEtloginUsername.getText().toString().equals(username) && mEtloginPassword.getText().toString().equals(password) ){
-                    Toast.makeText(LoginActivity.this,username, Toast.LENGTH_SHORT).show();
-
-                }
+//                if(mEtloginUsername.getText().toString().equals(username) && mEtloginPassword.getText().toString().equals(password) ){
+//                    Toast.makeText(LoginActivity.this,username, Toast.LENGTH_SHORT).show();
+//
+//                }
                 queue.add(request);
 
 
