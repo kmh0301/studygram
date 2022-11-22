@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 // Instantiate the RequestQueue.
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
-                String url ="https://2d8b-49-131-118-97.ap.ngrok.io/user?username="+ mEtloginUsername.getText().toString();
+                String url ="https://0dd5-218-102-211-54.ap.ngrok.io/user?username="+ mEtloginUsername.getText().toString();
 
                 JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,null, new Response.Listener<JSONArray>() {
                     @Override
@@ -117,7 +117,6 @@ public class LoginActivity extends AppCompatActivity {
         if(mEtloginUsername.getText().toString().equals(username) && mEtloginPassword.getText().toString().equals(password) ){
             Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_SHORT).show();
             user.setUsername(username);
-
 
             access();
         }else{

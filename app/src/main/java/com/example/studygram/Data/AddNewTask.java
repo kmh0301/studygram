@@ -31,13 +31,14 @@ public class AddNewTask extends BottomSheetDialogFragment {
     public static final String TAG = "ActionBottomDialog";
     private EditText newTaskText;
     private Button newTaskSaveButton;
+    private DatabaseHandler db;
+    IRefresh iRefresh;
 
     public AddNewTask(IRefresh iRefresh) {
         this.iRefresh = iRefresh;
     }
 
-    private DatabaseHandler db;
-    IRefresh iRefresh;
+
     public static AddNewTask newInstance(IRefresh iRefresh){
         return new AddNewTask(iRefresh);
     }

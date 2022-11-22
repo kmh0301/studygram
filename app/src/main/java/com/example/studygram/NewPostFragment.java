@@ -55,7 +55,7 @@ public class NewPostFragment extends Fragment {
     }
 
     public void AddPost(){
-        String url = "https://c64c-218-102-211-54.ap.ngrok.io/post?username="+user.getUsername()+"&content="+postContent.getText().toString();
+        String url = "https://0dd5-218-102-211-54.ap.ngrok.io/post?username="+user.getUsername()+"&content="+postContent.getText().toString();
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         JSONObject object = new JSONObject();

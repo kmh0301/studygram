@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mBtnlogin = findViewById(R.id.btn_register);
-        mBtnlogin.setOnClickListener(new View.OnClickListener() {
+        mBtnregister = findViewById(R.id.btn_register);
+        mBtnregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = null;
