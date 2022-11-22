@@ -114,7 +114,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 }
                 if (iRefresh!=null){
                     iRefresh.refresh();
-                    Toast.makeText(getContext(),"success",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"Task add success",Toast.LENGTH_LONG).show();
                 }
                 dismiss();
             }
